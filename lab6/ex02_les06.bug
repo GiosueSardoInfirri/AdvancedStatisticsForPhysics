@@ -1,0 +1,11 @@
+model {
+    # data likelihood
+    for (i in 1:length_positives) {
+        positives[i] ~ dbern(distribution[total[i]]);
+    }
+    
+    # Beta(3,100) prior for each test
+    for (i in 1:length_total) {
+        distribution[i] ~ dbeta(3, 100);
+    }
+}
